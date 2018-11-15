@@ -14,18 +14,15 @@ class Distribuidora {
 		nombre = razSocial
 	}
 	
-	//La distribuidora ejecuta los pedidos que se realicen de lotes de cerveza (un pedido siempre
-//es de una cantidad 'x' de lotes del mismo tipo). Del pedido nos interesa saber el costo total,
-//el cual se obtiene multiplicando la cantidad de lotes del pedido por el costo de cada lote.
-	method costo(){
-		 return 1
+	method costo(pedido){
+		 return pedido.costo()
 	}
 	
-	method agregarPedidos(pedido){
+	method agregarPedido(pedido){
 		pedidos.add(pedido)
 	}
 	
-	method quitarPedidos(pedido){
+	method quitarPedido(pedido){
 		pedidos.remove(pedido)
 	}
 	
@@ -33,7 +30,7 @@ class Distribuidora {
 		return pedidos.size()
 	}
 	
-	method descuentoAPartir(cantidad){
+		method descuentoAPartir(cantidad){
 		descuentoAPartir = cantidad
 	}
 	
@@ -41,12 +38,9 @@ class Distribuidora {
 		return descuentoAPartir
 	}
 	
-	method porcentajeDescuento(){
-		if(self.descuentoAPartir() >= self.cantidadPedidos()){
-			return 1
+	method darDescuento(pedido){
+		if(pedido.cantidadLotes() >= self.descuentoAPartir()){
+			pedido.descuento()
 		}
-		else return 0
-	}
-	
-	
+}
 }

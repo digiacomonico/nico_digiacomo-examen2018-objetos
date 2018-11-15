@@ -2,7 +2,7 @@ import Cerveza.*
 
 class Clasica inherits Cerveza{
 	var valorLevadura
-//	var valorDescuento
+//	var darDescuento
 
 	method costo(){
 		return self.valorLupulo() + valorLevadura
@@ -20,5 +20,11 @@ class Clasica inherits Cerveza{
 			valorLevadura = 0
 		}
 	}
+//	
+//	method darDescuento(){
+//		return "No"
+//	}
+//	
+	
 	
 }

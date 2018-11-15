@@ -4,7 +4,7 @@ import Porter.*
 import Cerveza.*
 import Lotes.*
 import Pedidos.*
-
+import Distribuidora.*
 
 test "Clasica con levadura alta y lupulo local"{
 	var cClasica = new Clasica()
@@ -88,6 +88,35 @@ test "2 lotes, precio $1500"{
 	pedidoA.agregarLote(otroLote)
 
 	assert.equals(1500,pedidoA.costo())
+}
+
+test "Con descuento"{
+	var cPorter = new Porter()
+	var unLote = new Lotes()
+	var otroLote = new Lotes()
+	var pedidoA = new Pedidos()
+	var distribuidoraA = new Distribuidora()
+	
+	cPorter.tipoLupulo("Local")
+	cPorter.tipoLevadura("Baja")
+	cPorter.cantidadKms(10)
+	
+	unLote.agregarCerveza(cPorter)
+	unLote.tipoLote("Porter")
+	unLote.costo(1000)
+	otroLote.costo(500)
+	
+	pedidoA.agregarLote(unLote)
+	pedidoA.agregarLote(otroLote)
+	pedidoA.distancia(9)
+	
+	distribuidoraA.agregarPedido(pedidoA)
+	distribuidoraA.descuentoAPartir(1)
+	
+	distribuidoraA.darDescuento(pedidoA)
+
+	assert.equals(1350,distribuidoraA.costo(pedidoA))
+	
 }
 
 
