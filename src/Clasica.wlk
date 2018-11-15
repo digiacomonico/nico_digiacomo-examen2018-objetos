@@ -2,9 +2,14 @@ import Cerveza.*
 
 class Clasica inherits Cerveza{
 	var valorLevadura
+//	var valorDescuento
 
 	method costo(){
 		return self.valorLupulo() + valorLevadura
+	}
+	
+	method valorDescuento(){
+		return 0
 	}
 	
 	method tipoLevadura(tipo){

@@ -41,8 +41,12 @@ class Distribuidora {
 		return descuentoAPartir
 	}
 	
-//	method porcentajeDescuento(tipoCerveza){
-//		if(tipoCerveza.)
-//	}
+	method porcentajeDescuento(){
+		if(self.descuentoAPartir() >= self.cantidadPedidos()){
+			return 1
+		}
+		else return 0
+	}
+	
 	
 }

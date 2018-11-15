@@ -53,7 +53,7 @@ test "porter con lúpulo local y un proveedor a 2km costaría $832 (4% más)"{
 	assert.equals(832,cPorter.costo())
 }
 
-test "A ver"{
+test "1 lote, precio $1000"{
 	var cPorter = new Porter()
 	var unLote = new Lotes()
 	var pedidoA = new Pedidos()
@@ -66,7 +66,28 @@ test "A ver"{
 	unLote.costo(1000)
 	
 	pedidoA.agregarLote(unLote)
-	
-	assert.equals(1000,pedidoA.costo(unLote))
+
+	assert.equals(1000,pedidoA.costo())
 }
+
+test "2 lotes, precio $1500"{
+	var cPorter = new Porter()
+	var unLote = new Lotes()
+	var otroLote = new Lotes()
+	var pedidoA = new Pedidos()
+	
+	cPorter.tipoLupulo("Local")
+	cPorter.tipoLevadura("Baja")
+	cPorter.cantidadKms(2)
+	
+	unLote.agregarCerveza(cPorter)
+	unLote.costo(1000)
+	otroLote.costo(500)
+	
+	pedidoA.agregarLote(unLote)
+	pedidoA.agregarLote(otroLote)
+
+	assert.equals(1500,pedidoA.costo())
+}
+
 

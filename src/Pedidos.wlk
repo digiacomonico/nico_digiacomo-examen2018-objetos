@@ -16,7 +16,11 @@ class Pedidos {
 	}
 	
 		
-	method costo(lote){
-		return lotes.size() * lote.costo()
+	method costo(){
+		return lotes.sum({l => l.costo()})
 	}
+	
+//	method sumaCostoLotes(){
+//		return 
+//	}
 }
