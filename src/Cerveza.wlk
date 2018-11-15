@@ -1,12 +1,21 @@
 class Cerveza{
 	var valorLupulo
 	var constLupulo
+	var tipoLupulo
+	
+//	method tipoLupulo(tipo){
+//		tipoLupulo = tipo
+//	}
+	
+	method tipoLupulo(){
+		return tipoLupulo 
+	}
 	
 	method valorLupulo(){
 		return valorLupulo
 	}
 	
-	method valorLupulo(origen){
+	method tipoLupulo(origen){
 		if(origen == "Importado"){
 			valorLupulo = 1000
 		}

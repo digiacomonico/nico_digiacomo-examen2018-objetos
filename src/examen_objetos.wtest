@@ -2,6 +2,8 @@ import Lager.*
 import Clasica.*
 import Porter.*
 import Cerveza.*
+import Lotes.*
+import Pedidos.*
 
 
 test "Clasica con levadura alta y lupulo local"{
@@ -49,5 +51,22 @@ test "porter con lúpulo local y un proveedor a 2km costaría $832 (4% más)"{
 	cPorter.tipoLevadura("Baja")
 	cPorter.cantidadKms(2)
 	assert.equals(832,cPorter.costo())
+}
+
+test "A ver"{
+	var cPorter = new Porter()
+	var unLote = new Lotes()
+	var pedidoA = new Pedidos()
+	
+	cPorter.tipoLupulo("Local")
+	cPorter.tipoLevadura("Baja")
+	cPorter.cantidadKms(2)
+	
+	unLote.agregarCerveza(cPorter)
+	unLote.costo(1000)
+	
+	pedidoA.agregarLote(unLote)
+	
+	assert.equals(1000,pedidoA.costo(unLote))
 }
 
