@@ -90,10 +90,13 @@ test "2 lotes, precio $1500"{
 	assert.equals(1500,pedidoA.costo())
 }
 
-test "Con descuento"{
+test "Tres Birreros: 3 lotes de Porter, el proveedor esta a menos de 10km"{
 	var cPorter = new Porter()
+	var cPorterA = new Porter()
+	var cPorterB = new Porter()
 	var unLote = new Lotes()
 	var otroLote = new Lotes()
+	var otroLoteA = new Lotes()
 	var pedidoA = new Pedidos()
 	var distribuidoraA = new Distribuidora()
 	
@@ -101,13 +104,29 @@ test "Con descuento"{
 	cPorter.tipoLevadura("Baja")
 	cPorter.cantidadKms(10)
 	
+	cPorterA.tipoLupulo("Local")
+	cPorterA.tipoLevadura("Baja")
+	cPorterA.cantidadKms(9)
+	
+	cPorterB.tipoLupulo("Local")
+	cPorterB.tipoLevadura("Baja")
+	cPorterB.cantidadKms(9)
+	
 	unLote.agregarCerveza(cPorter)
 	unLote.tipoLote("Porter")
 	unLote.costo(1000)
+	
+	otroLote.agregarCerveza(cPorterA)
 	otroLote.costo(500)
+	otroLote.tipoLote("Porter")
+	
+	otroLoteA.agregarCerveza(cPorterB)
+	otroLoteA.costo(500)
+	otroLoteA.tipoLote("Porter")
 	
 	pedidoA.agregarLote(unLote)
 	pedidoA.agregarLote(otroLote)
+	pedidoA.agregarLote(otroLoteA)
 	pedidoA.distancia(9)
 	
 	distribuidoraA.agregarPedido(pedidoA)
@@ -115,8 +134,280 @@ test "Con descuento"{
 	
 	distribuidoraA.darDescuento(pedidoA)
 
-	assert.equals(1350,distribuidoraA.costo(pedidoA))
+	assert.equals(1800,distribuidoraA.costo(pedidoA))
 	
 }
 
+test "Moe: 8 lotes de Lager con 3 ingredientes tiene 6% de descuento"{
+	var cLagerA = new Lager()
+	var cLagerB = new Lager()
+	var cLagerC = new Lager()
+	var cLagerD = new Lager()
+	var cLagerE = new Lager()
+	var cLagerF = new Lager()
+	var cLagerG = new Lager()
+	var cLagerH = new Lager()
+	
+	var unLote = new Lotes()
+	var otroLote = new Lotes()
+	var otroLoteA = new Lotes()
+	var otroLoteB = new Lotes()
+	var otroLoteC = new Lotes()
+	var otroLoteD = new Lotes()
+	var otroLoteE = new Lotes()
+	var otroLoteF = new Lotes()
+	
+	var pedidoA = new Pedidos()
+	var distribuidoraA = new Distribuidora()
+	
+	cLagerA.tipoLupulo("Local")
+	cLagerA.tipoLevadura("Baja")
+	cLagerA.agregarIngredientes("A")
+	cLagerA.agregarIngredientes("B")
+	cLagerA.agregarIngredientes("C")
+	
+	cLagerB.tipoLupulo("Local")
+	cLagerB.tipoLevadura("Baja")
+	cLagerB.agregarIngredientes("A")
+	cLagerB.agregarIngredientes("B")
+	cLagerB.agregarIngredientes("C")
+	
+	cLagerC.tipoLupulo("Local")
+	cLagerC.tipoLevadura("Baja")
+	cLagerC.agregarIngredientes("A")
+	cLagerC.agregarIngredientes("B")
+	cLagerC.agregarIngredientes("C")
+	
+	cLagerD.tipoLupulo("Local")
+	cLagerD.tipoLevadura("Baja")
+	cLagerD.agregarIngredientes("A")
+	cLagerD.agregarIngredientes("B")
+	cLagerD.agregarIngredientes("C")
+	
+	cLagerE.tipoLupulo("Local")
+	cLagerE.tipoLevadura("Baja")
+	cLagerE.agregarIngredientes("A")
+	cLagerE.agregarIngredientes("B")
+	cLagerE.agregarIngredientes("C")
+	
+	cLagerF.tipoLupulo("Local")
+	cLagerF.tipoLevadura("Baja")
+	cLagerF.agregarIngredientes("A")
+	cLagerF.agregarIngredientes("B")
+	cLagerF.agregarIngredientes("C")
+	
+	cLagerG.tipoLupulo("Local")
+	cLagerG.tipoLevadura("Baja")
+	cLagerG.agregarIngredientes("A")
+	cLagerG.agregarIngredientes("B")
+	cLagerG.agregarIngredientes("C")
+	
+	cLagerH.tipoLupulo("Local")
+	cLagerH.tipoLevadura("Baja")
+	cLagerH.agregarIngredientes("A")
+	cLagerH.agregarIngredientes("B")
+	cLagerH.agregarIngredientes("C")
+	
+	unLote.agregarCerveza(cLagerA)
+	unLote.tipoLote("Lager")
+	
+	otroLote.agregarCerveza(cLagerB)
+	otroLote.tipoLote("Lager")
+	
+	otroLoteA.agregarCerveza(cLagerC)
+	otroLoteA.tipoLote("Lager")
+	
+	otroLoteB.agregarCerveza(cLagerD)
+	otroLoteB.tipoLote("Lager")
+	
+	otroLoteC.agregarCerveza(cLagerE)
+	otroLoteC.tipoLote("Lager")
+	
+	otroLoteD.agregarCerveza(cLagerF)
+	otroLoteD.tipoLote("Lager")
+	
+	otroLoteE.agregarCerveza(cLagerG)
+	otroLoteE.tipoLote("Lager")
+	
+	otroLoteF.agregarCerveza(cLagerH)
+	otroLoteF.tipoLote("Lager")
+	
+	
+	unLote.costo(1000)
+	otroLote.costo(1000)
+	otroLoteA.costo(1000)
+	otroLoteB.costo(1000)
+	otroLoteC.costo(1000)
+	otroLoteD.costo(1000)
+	otroLoteE.costo(1000)
+	otroLoteF.costo(1000)
+	
+	pedidoA.agregarLote(unLote)
+	pedidoA.agregarLote(otroLote)
+	pedidoA.agregarLote(otroLoteA)
+	pedidoA.agregarLote(otroLoteB)
+	pedidoA.agregarLote(otroLoteC)
+	pedidoA.agregarLote(otroLoteD)
+	pedidoA.agregarLote(otroLoteE)
+	pedidoA.agregarLote(otroLoteF)
+	
+	pedidoA.distancia(9)
+	
+	distribuidoraA.agregarPedido(pedidoA)
+	distribuidoraA.descuentoAPartir(1)
+	
+	distribuidoraA.darDescuento(pedidoA)
+
+	assert.equals(7520,distribuidoraA.costo(pedidoA))
+	
+}
+
+test "Moe: 8 lotes de Lager con 6 ingredientes tiene 20% de descuento"{
+	
+	var cLagerA = new Lager()
+	var cLagerB = new Lager()
+	var cLagerC = new Lager()
+	var cLagerD = new Lager()
+	var cLagerE = new Lager()
+	var cLagerF = new Lager()
+	var cLagerG = new Lager()
+	var cLagerH = new Lager()
+	
+	var unLote = new Lotes()
+	var otroLote = new Lotes()
+	var otroLoteA = new Lotes()
+	var otroLoteB = new Lotes()
+	var otroLoteC = new Lotes()
+	var otroLoteD = new Lotes()
+	var otroLoteE = new Lotes()
+	var otroLoteF = new Lotes()
+	
+	var pedidoA = new Pedidos()
+	var distribuidoraA = new Distribuidora()
+	
+	cLagerA.tipoLupulo("Local")
+	cLagerA.tipoLevadura("Baja")
+	cLagerA.agregarIngredientes("A")
+	cLagerA.agregarIngredientes("B")
+	cLagerA.agregarIngredientes("C")
+	cLagerA.agregarIngredientes("D")
+	cLagerA.agregarIngredientes("E")
+	cLagerA.agregarIngredientes("F")
+	
+	cLagerB.tipoLupulo("Local")
+	cLagerB.tipoLevadura("Baja")
+	cLagerB.agregarIngredientes("A")
+	cLagerB.agregarIngredientes("B")
+	cLagerB.agregarIngredientes("C")
+	cLagerB.agregarIngredientes("D")
+	cLagerB.agregarIngredientes("E")
+	cLagerB.agregarIngredientes("F")
+	
+	cLagerC.tipoLupulo("Local")
+	cLagerC.tipoLevadura("Baja")
+	cLagerC.agregarIngredientes("A")
+	cLagerC.agregarIngredientes("B")
+	cLagerC.agregarIngredientes("C")
+	cLagerC.agregarIngredientes("D")
+	cLagerC.agregarIngredientes("E")
+	cLagerC.agregarIngredientes("F")
+	
+	cLagerD.tipoLupulo("Local")
+	cLagerD.tipoLevadura("Baja")
+	cLagerD.agregarIngredientes("A")
+	cLagerD.agregarIngredientes("B")
+	cLagerD.agregarIngredientes("C")
+	cLagerD.agregarIngredientes("D")
+	cLagerD.agregarIngredientes("E")
+	cLagerD.agregarIngredientes("F")
+	
+	cLagerE.tipoLupulo("Local")
+	cLagerE.tipoLevadura("Baja")
+	cLagerE.agregarIngredientes("A")
+	cLagerE.agregarIngredientes("B")
+	cLagerE.agregarIngredientes("C")
+	cLagerE.agregarIngredientes("D")
+	cLagerE.agregarIngredientes("E")
+	cLagerE.agregarIngredientes("F")
+	
+	cLagerF.tipoLupulo("Local")
+	cLagerF.tipoLevadura("Baja")
+	cLagerF.agregarIngredientes("A")
+	cLagerF.agregarIngredientes("B")
+	cLagerF.agregarIngredientes("C")
+	cLagerF.agregarIngredientes("D")
+	cLagerF.agregarIngredientes("E")
+	cLagerF.agregarIngredientes("F")
+	
+	cLagerG.tipoLupulo("Local")
+	cLagerG.tipoLevadura("Baja")
+	cLagerG.agregarIngredientes("A")
+	cLagerG.agregarIngredientes("B")
+	cLagerG.agregarIngredientes("C")
+	cLagerG.agregarIngredientes("D")
+	cLagerG.agregarIngredientes("E")
+	cLagerG.agregarIngredientes("F")
+	
+	cLagerH.tipoLupulo("Local")
+	cLagerH.tipoLevadura("Baja")
+	cLagerH.agregarIngredientes("A")
+	cLagerH.agregarIngredientes("B")
+	cLagerH.agregarIngredientes("C")
+	cLagerH.agregarIngredientes("D")
+	cLagerH.agregarIngredientes("E")
+	cLagerH.agregarIngredientes("F")
+	
+	
+	unLote.agregarCerveza(cLagerA)
+	unLote.tipoLote("Lager")
+	
+	otroLote.agregarCerveza(cLagerB)
+	otroLote.tipoLote("Lager")
+	
+	otroLoteA.agregarCerveza(cLagerC)
+	otroLoteA.tipoLote("Lager")
+	
+	otroLoteB.agregarCerveza(cLagerD)
+	otroLoteB.tipoLote("Lager")
+	
+	otroLoteC.agregarCerveza(cLagerE)
+	otroLoteC.tipoLote("Lager")
+	
+	otroLoteD.agregarCerveza(cLagerF)
+	otroLoteD.tipoLote("Lager")
+	
+	otroLoteE.agregarCerveza(cLagerG)
+	otroLoteE.tipoLote("Lager")
+	
+	otroLoteF.agregarCerveza(cLagerH)
+	otroLoteF.tipoLote("Lager")
+	
+	
+	unLote.costo(1000)
+	otroLote.costo(1000)
+	otroLoteA.costo(1000)
+	otroLoteB.costo(1000)
+	otroLoteC.costo(1000)
+	otroLoteD.costo(1000)
+	otroLoteE.costo(1000)
+	otroLoteF.costo(1000)
+	
+	pedidoA.agregarLote(unLote)
+	pedidoA.agregarLote(otroLote)
+	pedidoA.agregarLote(otroLoteA)
+	pedidoA.agregarLote(otroLoteB)
+	pedidoA.agregarLote(otroLoteC)
+	pedidoA.agregarLote(otroLoteD)
+	pedidoA.agregarLote(otroLoteE)
+	pedidoA.agregarLote(otroLoteF)
+	
+	pedidoA.distancia(9)
+	
+	distribuidoraA.agregarPedido(pedidoA)
+	distribuidoraA.descuentoAPartir(1)
+	
+	distribuidoraA.darDescuento(pedidoA)
+
+	assert.equals(6400,distribuidoraA.costo(pedidoA))
+}
 

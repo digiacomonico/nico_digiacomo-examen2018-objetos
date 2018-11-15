@@ -5,7 +5,7 @@ import Clasica.*
 import Lotes.*
 
 class Pedidos {
-	var lotes = #{}
+	var lotes = []
 	var valorDescuento = 0
 	var distancia
 	
