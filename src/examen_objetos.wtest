@@ -1,0 +1,53 @@
+import Lager.*
+import Clasica.*
+import Porter.*
+import Cerveza.*
+
+
+test "Clasica con levadura alta y lupulo local"{
+	var cClasica = new Clasica()
+	cClasica.tipoLupulo("Local")
+	cClasica.tipoLevadura("Alta")
+	assert.equals(880,cClasica.costo())
+}
+
+test "Clasica con levadura baja y lupulo importado"{
+	var cClasica = new Clasica()
+	cClasica.tipoLupulo("Importado")
+	cClasica.tipoLevadura("Baja")
+	assert.equals(1000,cClasica.costo())
+}
+
+test "Lager con lúpulo importado y sin ingredientes cuesta :$1000"{
+	var cLager = new Lager()
+	cLager.tipoLupulo("Importado")
+	cLager.tipoLevadura("Baja")
+	assert.equals(1000,cLager.costo())
+}
+
+test "Lager con lúpulo importado y con 3 ingredientes, cuesta $1150"{
+	var cLager = new Lager()
+	cLager.tipoLupulo("Importado")
+	cLager.tipoLevadura("Baja")
+	cLager.agregarIngredientes("A")
+	cLager.agregarIngredientes("B")
+	cLager.agregarIngredientes("C")
+	assert.equals(1150,cLager.costo())
+}
+
+test "Porter con lúpulo importado y de un proveedor a 20km cuesta $1400 (40% más)"{
+	var cPorter = new Porter()
+	cPorter.tipoLupulo("Importado")
+	cPorter.tipoLevadura("Baja")
+	cPorter.cantidadKms(20)
+	assert.equals(1400,cPorter.costo())
+}
+
+test "porter con lúpulo local y un proveedor a 2km costaría $832 (4% más)"{
+	var cPorter = new Porter()
+	cPorter.tipoLupulo("Local")
+	cPorter.tipoLevadura("Baja")
+	cPorter.cantidadKms(2)
+	assert.equals(832,cPorter.costo())
+}
+
